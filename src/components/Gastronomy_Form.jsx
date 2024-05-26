@@ -1,45 +1,53 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useGastronomy } from '../context/GastronomyContext'
 
-function Gastronomy_From() {
+function Gastronomy_Form() {
 
-const { register, handleSubmit, setValue} = useForm()
+const { register, handleSubmit, setValue, reset} = useForm()
+const { postGastronomy } = useGastronomy()
 
 
 
 const onSubmit = handleSubmit(async (data) => {
-const dataValid = {
-  ...data,
-  date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format()
-}
-if (params.id) {
-  updateTask(params.id, dataValid)
-} else {
-  createTask(dataValid)
-}
-navigate('/task')
+
+  console.log(data)
+  postGastronomy(data)
+  //reset()
+
 })
 
 return (
 <div className="h-[calc(100vh-100px)] flex items-center justify-center">
-  <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+  <div className="bg-gray-300 max-w-md w-full p-10 rounded-md">
 
     <form onSubmit={onSubmit}>
-      <label htmlFor='title'>Title</label>
-      <input type="text" placeholder='Title'
-        {...register('title')}
-        className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-      />
-      <label htmlFor='description'>Description</label>
-      <textarea rows={3} placeholder='Description'
-        {...register('description')}
-        className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-      ></textarea>
-      <label htmlFor='date'>Date</label>
-      <input type="date" {...register('date')}
-        className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2" />
 
-      <button className=" bg-indigo-500 px-3 py-2 rounded-md">Save</button>
+      <label htmlFor='name'>Nombre del local</label>
+      <input type="text" placeholder='Nombre del local'
+        {...register('name')}
+        className="w-full bg-gray-100 px-4 py-2 rounded-md my-2"
+      />
+
+      <label htmlFor='address'>Direccion</label>
+      <input type="text" placeholder='Direccion'
+        {...register('address')}
+        className="w-full bg-gray-100 px-4 py-2 rounded-md my-2"
+      ></input>
+
+      <label htmlFor='photo_url'>Photo_url</label>
+      <input type="file" placeholder='Photo_url'
+        {...register('photo_url')}
+        className="w-full bg-gray-100 px-4 py-2 rounded-md my-2"
+      ></input>
+      
+      {/* <label htmlFor='photo_url'>Photo_url</label>
+      <textarea rows={3} placeholder='Photo_url'
+        {...register('photo_url')}
+        className="w-full bg-gray-100 px-4 py-2 rounded-md my-2"
+      ></textarea> */}
+
+      <button className=" bg-cyan-500 px-3 py-2 rounded-md">Enviar</button>
 
     </form>
   </div>
@@ -48,7 +56,7 @@ return (
 
   };
 
-export default Gastronomy_From
+export default Gastronomy_Form
 
 
 
