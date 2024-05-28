@@ -19,7 +19,7 @@ export function GastronomyProvider({ children }){
 
         try {
             const res = await getGastronomyRequest()
-            console.log(res.data)
+            //console.log(res.data)
             const response = res.data
             setgastronomy(response)
         } catch (error) {
@@ -27,9 +27,18 @@ export function GastronomyProvider({ children }){
         }
     }
 
-    const postGastronomy = async (data) => {
-        const res = await postGastronomyRequest(data)
-        console.log(res)
+    // const postGastronomy = async (data) => {
+    //     const res = await postGastronomyRequest(data)
+    //     console.log(res)
+    // }
+    const postGastronomy = async (formData) => {
+        try {
+            const response = await postGastronomyRequest(formData)
+            return response.data;
+        } catch (error) {
+            console.error('Error posting gastronomy data', error);
+            throw error;
+        }
     }
 
     return(
