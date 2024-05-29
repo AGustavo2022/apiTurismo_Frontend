@@ -74,15 +74,16 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         const checkLogin = async () => {
             const cookiesAuth = Cookies.get('authToken')
+            //console.log(cookiesAuth)
             if (!cookiesAuth) {
                 setAuthenticates(false)
                 setLoading(false)
-                console.log(cookiesAuth)
+                //console.log(cookiesAuth)
                 return
             }
             try {
                 const res = await verifyTokenRequest()
-                //console.log(res);
+                console.log(res);
                 if (!res.data) return setAuthenticates(false)
                 setLoading(false);
                 setAuthenticates(true);

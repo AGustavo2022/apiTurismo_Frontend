@@ -15,7 +15,7 @@ function LoginPage() {
 
   useEffect (()=>{
     console.log(isAuthenticated)
-    if(isAuthenticated) navigate('/form')
+    if(isAuthenticated) navigate('/')
   }, [isAuthenticated])
 
   return (
