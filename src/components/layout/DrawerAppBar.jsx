@@ -5,12 +5,12 @@ import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import { ListlTemsMain, ListlTemsSecond } from './ListlTems';
 
-const drawerWidth = 240;
 
-export default function DrawerAppBar() {
+const drawerWidth = 220;
+
+export default function DrawerAppBar({ children }) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -37,9 +37,10 @@ export default function DrawerAppBar() {
           <ListlTemsSecond />
         </Box>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
-
+      <Box
+        component="main" sx={{ flexGrow: 1, p: 1, bgcolor: 'yellow', color: 'black' }}>
+         <Toolbar />
+         {children}
       </Box>
     </Box>
   );

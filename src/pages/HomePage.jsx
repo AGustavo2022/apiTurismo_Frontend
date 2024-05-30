@@ -3,7 +3,7 @@ import DrawerAppBar from '../components/layout/DrawerAppBar'
 
 function HomePage() {
   return (
-    <DrawerAppBar/>
+    <h1>Home</h1>
   )
 }
 

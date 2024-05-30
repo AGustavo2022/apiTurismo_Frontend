@@ -1,8 +1,12 @@
 import React from 'react'
 
+
+
 function GastronomyPage() {
   return (
-    <div>GastronomyPage</div>
+    <>
+        <div>GastronomyPage</div>
+    </>
   )
 }
 

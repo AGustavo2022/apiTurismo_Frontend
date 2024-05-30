@@ -1,13 +1,11 @@
 import React from 'react'
-import DrawerAppBar from '../components/layout/DrawerAppBar'
 
-function destinationPage() {
+function DestinationPage() {
   return (
     <>
-    <DrawerAppBar/>
     <div>destinationPage</div>
     </>
   )
 }
 
-export default destinationPage
+export default DestinationPage
