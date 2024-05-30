@@ -13,7 +13,7 @@ function GastronomyCard() {
   }, [])
 
     return (
-        <div className="flex flex-wrap">
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2'> {/* Ajusta el valor de gap según tus necesidades */}
             {gastronomy.map(e => (
                 <Card
                     key={e.id}

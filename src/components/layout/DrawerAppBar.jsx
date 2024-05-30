@@ -38,7 +38,7 @@ export default function DrawerAppBar({ children }) {
         </Box>
       </Drawer>
       <Box
-        component="main" sx={{ flexGrow: 1, p: 1, bgcolor: 'yellow', color: 'black' }}>
+        component="main" sx={{ flexGrow: 1, bgcolor: 'yellow', color: 'black' }}>
          <Toolbar />
          {children}
       </Box>
