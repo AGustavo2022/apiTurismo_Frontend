@@ -1,6 +1,6 @@
 import React from 'react'
-import GastronomyForm from '../components/Gastronomy_Form'
-import GastronomyCard from '../components/GastronomyCard'
+import GastronomyForm from '../../components/Gastronomy_Form'
+import GastronomyCard from '../../components/GastronomyCard'
 
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ function GastronomyPage() {
   return (
     <>
     <div className="m-4">
-      <Button onClick={() => { navigate('/destination') }} variant="contained" >Agregar Local Comercial</Button>
+      <Button onClick={() => { navigate('/gastronomy/from') }} variant="contained" >Agregar Local Comercial</Button>
     </div>
     <GastronomyCard/>
     </>

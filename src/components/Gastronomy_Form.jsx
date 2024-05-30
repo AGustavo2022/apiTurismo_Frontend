@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useGastronomy } from '../context/GastronomyContext';
 import ClippedDrawer from '../components/layout/DrawerAppBar';
 import { Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function GastronomyForm() {
     const { register, handleSubmit, reset } = useForm();
     const { postGastronomy } = useGastronomy();
+    const navigate = useNavigate()
 
     const onSubmit = handleSubmit(async (data) => {
         const formData = new FormData();
@@ -20,6 +22,7 @@ function GastronomyForm() {
         try {
             await postGastronomy(formData);
             reset();
+            navigate('/gastronomy')
         } catch (error) {
             console.error('Error submitting the form', error);
         }
