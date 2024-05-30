@@ -1,15 +1,19 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useGastronomy } from '../context/GastronomyContext';
 
-const Card = ({ imageUrl, name, address }) => {
+const Card = ({ id, imageUrl, name, address }) => {
+
+  const { deleteGastronomy, removelist } = useGastronomy()
 
   const handleEditClick = () => {
     console.log('edit')
   };
 
   const handleDeleteClick = () => {
-    console.log('delete')
+    deleteGastronomy(id)
+    removelist(id)
   };
   
   return (

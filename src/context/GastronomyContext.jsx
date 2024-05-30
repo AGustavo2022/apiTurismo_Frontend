@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getGastronomyRequest, postGastronomyRequest } from "../api/gastronomy.js";
+import { deleteGastronomyRequest, getGastronomyRequest, postGastronomyRequest } from "../api/gastronomy.js";
 
 const GastronomyContext = createContext()
 
@@ -13,7 +13,7 @@ export const useGastronomy = ()=>{
 
 export function GastronomyProvider({ children }){
 
-    const [gastronomy, setgastronomy] = useState([])
+    const [gastronomy, setGastronomy] = useState([])
 
     const getGastronomy = async () =>{
 
@@ -21,16 +21,12 @@ export function GastronomyProvider({ children }){
             const res = await getGastronomyRequest()
             //console.log(res.data)
             const response = res.data
-            setgastronomy(response)
+            setGastronomy(response)
         } catch (error) {
             console.log(error)
         }
     }
 
-    // const postGastronomy = async (data) => {
-    //     const res = await postGastronomyRequest(data)
-    //     console.log(res)
-    // }
     const postGastronomy = async (formData) => {
         try {
             const response = await postGastronomyRequest(formData)
@@ -41,11 +37,27 @@ export function GastronomyProvider({ children }){
         }
     }
 
+    const deleteGastronomy = async (id) => {
+        try {
+            const res = await deleteGastronomyRequest(id)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function removelist(id){
+        const newGastronomy = gastronomy.filter((e) => e.id !== id)
+        //console.log(newTasks)
+        setGastronomy(newGastronomy)
+    }
+
     return(
         <GastronomyContext.Provider value={{
             gastronomy,
             getGastronomy,
-            postGastronomy
+            postGastronomy,
+            deleteGastronomy,
+            removelist
         }}>
             {children}
         </GastronomyContext.Provider>
