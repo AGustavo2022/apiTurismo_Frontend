@@ -1,5 +1,5 @@
 import React from 'react'
-import GastronomyForm from '../../components/Gastronomy_Form'
+import GastronomyForm from '../../components/Gastronomy/GastronomyForm'
 
 function GastronomyFromPage() {
   return (

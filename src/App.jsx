@@ -10,6 +10,7 @@ import LodgePage from './pages/LodgePage'
 import GastronomyPage from './pages/Gastronomy/GastronomyPage'
 import ProtectedLayout from './components/layout/ProtectedLayout'
 import GastronomyFromPage from './pages/Gastronomy/GastronomyFromPage'
+import GastronomyFormUpdate from './components/Gastronomy/GastronomyFormUpdate'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                   <Route path='/transport' element={<TransportPage />} />
                   <Route path='/gastronomy' element={<GastronomyPage />} />
                   <Route path='/gastronomy/from' element={<GastronomyFromPage />} />
+                  <Route path='/gastronomy/from/:id' element={<GastronomyFormUpdate /> } />
                   <Route path='/lodge' element={<LodgePage />} />
                   <Route path='/destination' element={<DestinationPage />} />
                 </Route>

@@ -1,30 +1,34 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useGastronomy } from '../context/GastronomyContext';
+import { useGastronomy } from '../../context/GastronomyContext';
+import { useNavigate } from 'react-router-dom';
 
-const Card = ({ id, imageUrl, name, address }) => {
+const GastronomyCard = ({ gastronomy }) => {
 
   const { deleteGastronomy, removelist } = useGastronomy()
+  const navigate = useNavigate()
+
+  const imageUrl = `http://localhost:8080/${gastronomy.photo_url}`
 
   const handleEditClick = () => {
-    console.log('edit')
+    navigate(`/gastronomy/from/${gastronomy.id}`)
   };
 
   const handleDeleteClick = () => {
-    deleteGastronomy(id)
-    removelist(id)
+    deleteGastronomy(gastronomy.id)
+    removelist(gastronomy.id)
   };
   
   return (
     <div className='w-full max-w-xxs mx-auto bg-white rounded-3xl shadow-xl overflow-hidden'>
       <div className='max-w-md mx-auto'>
-        <div className='h-[200px]' style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className='h-[150px]' style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         </div>
         <div className='p-4 sm:p-6'>
-          <p className='font-bold text-gray-700 text-[22px] leading-7 mb-1'>{name}</p>
+          <p className='font-bold text-gray-700 text-[22px] leading-7 mb-1'>{gastronomy.name}</p>
           <div className='flex flex-row'>
-            <p className='text-[#3C3C4399] text-[17px] mr-2'>{address}</p>
+            <p className='text-[#3C3C4399] text-[17px] mr-2'>{gastronomy.address}</p>
           </div>
           <p className='text-[#7C7C80] font-[15px] mt-6'>Our shrimp sauce is made with mozarella, a creamy taste of shrimp with extra kick of spices.</p>
           
@@ -53,4 +57,4 @@ const Card = ({ id, imageUrl, name, address }) => {
   );
 };
 
-export default Card;
+export default GastronomyCard;
